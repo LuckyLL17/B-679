@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: campus-system
+  datasource:
+    url: jdbc:postgresql://localhost:5432/campus_db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # 开发阶段使用 update，生产环境建议 validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+
+# 初始化管理员配置 (自定义配置，用于启动时创建)
+app:
+  admin:
+    username: admin
+    password: admin123 # 注意：实际生产环境不应明文存储，此处仅为演示便利

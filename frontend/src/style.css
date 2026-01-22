@@ -1,0 +1,99 @@
+/* 全局样式 - 深红色学术主题 */
+:root {
+	--primary-color: rgb(150, 30, 25);
+	--primary-hover: rgb(120, 20, 18);
+	--primary-light: rgba(150, 30, 25, 0.1);
+	--bg-color: #f8f9fa;
+	--text-color: #333333;
+	--text-secondary: #666666;
+	--white: #ffffff;
+	--gray-light: #e8e8e8;
+	--gray-medium: #d0d0d0;
+	--border-color: #e0e0e0;
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+	--shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family:
+		'Inter',
+		'Noto Sans SC',
+		system-ui,
+		-apple-system,
+		sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+}
+
+#app {
+	min-height: 100vh;
+}
+
+a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--text-color);
+	font-weight: 600;
+}
+
+/* 通用按钮 */
+.btn-primary {
+	background-color: var(--primary-color);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 500;
+	transition:
+		background 0.2s,
+		box-shadow 0.2s;
+}
+.btn-primary:hover {
+	background-color: var(--primary-hover);
+	box-shadow: var(--shadow-sm);
+}
+.btn-primary:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+/* 卡片 */
+.card {
+	background: var(--white);
+	padding: 24px;
+	border-radius: 8px;
+	box-shadow: var(--shadow-sm);
+	border: 1px solid var(--border-color);
+}
+
+/* 容器 */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 24px;
+}
+
+/* 表单 */
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: 14px;
+}

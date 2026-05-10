@@ -22,6 +22,9 @@ public class AuthController {
 
     @GetMapping("/me")
     public Map<String, Object> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return null; // Frontend handles null as "not logged in"
+        }
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow();
         Map<String, Object> response = new HashMap<>();
         response.put("id", user.getId());

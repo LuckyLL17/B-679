@@ -28,10 +28,18 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status = Status.ACTIVE;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     public enum Role {
         ADMIN, USER
+    }
+
+    public enum Status {
+        ACTIVE, DISABLED, EXPIRED
     }
 }

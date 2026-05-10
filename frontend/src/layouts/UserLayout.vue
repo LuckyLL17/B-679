@@ -25,7 +25,7 @@ onMounted(async () => {
 	try {
 		user.value = await request.get('/auth/me')
 	} catch (e) {
-		router.push('/login')
+		console.log('Error fetching user info', e)
 	}
 })
 

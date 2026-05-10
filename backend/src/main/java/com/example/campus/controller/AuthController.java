@@ -3,6 +3,7 @@ package com.example.campus.controller;
 import com.example.campus.entity.User;
 import com.example.campus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,9 @@ public class AuthController {
 
     @GetMapping("/me")
     public Map<String, Object> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
+        if (userDetails == null) {
+            return null;
+        }
         User user = userRepository.findByUsername(userDetails.getUsername()).orElseThrow();
         Map<String, Object> response = new HashMap<>();
         response.put("id", user.getId());
@@ -36,9 +40,9 @@ public class AuthController {
         String username = body.get("username");
         String password = body.get("password");
         String fullName = body.get("fullName");
-        
+
         authService.registerUser(username, password, fullName);
-        
+
         return Map.of("success", true, "message", "注册成功");
     }
 }

@@ -4,6 +4,7 @@ import com.example.campus.entity.User;
 import com.example.campus.repository.UserRepository;
 import com.example.campus.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/events/{eventId}")
+@PreAuthorize("isAuthenticated()")
 public class RegistrationController {
 
     @Autowired
@@ -21,7 +23,8 @@ public class RegistrationController {
     private UserRepository userRepository;
 
     @PostMapping("/registrations")
-    public Map<String, Object> register(@PathVariable Long eventId, 
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public Map<String, Object> register(@PathVariable Long eventId,
                                         @AuthenticationPrincipal UserDetails userDetails) {
         Long userId = getUserId(userDetails);
         registrationService.register(userId, eventId);
@@ -29,6 +32,7 @@ public class RegistrationController {
     }
 
     @DeleteMapping("/registrations")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public Map<String, Object> cancelRegistration(@PathVariable Long eventId,
                                                   @AuthenticationPrincipal UserDetails userDetails) {
         Long userId = getUserId(userDetails);
@@ -37,6 +41,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/checkin")
+    @PreAuthorize("hasRole('ADMIN')")
     public Map<String, Object> checkIn(@PathVariable Long eventId,
                                        @AuthenticationPrincipal UserDetails userDetails) {
         Long userId = getUserId(userDetails);

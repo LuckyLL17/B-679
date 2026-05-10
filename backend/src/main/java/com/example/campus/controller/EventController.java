@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/events")
+@PreAuthorize("isAuthenticated()")
 public class EventController {
 
     @Autowired
@@ -38,7 +40,7 @@ public class EventController {
     @GetMapping("/{id}")
     public Map<String, Object> getEvent(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
         Event event = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("活动不存在"));
-        
+
         Map<String, Object> response = new HashMap<>();
         response.put("id", event.getId());
         response.put("title", event.getTitle());
@@ -64,7 +66,7 @@ public class EventController {
                 }
             }
         }
-        
+
         return response;
     }
 }

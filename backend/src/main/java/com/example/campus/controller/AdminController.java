@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/admin/events")
+@PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
     @Autowired
@@ -44,14 +46,13 @@ public class AdminController {
         return Map.of("success", true);
     }
 
-    // Pending implementation for registrations view
     @Autowired
     private com.example.campus.service.RegistrationService registrationService;
 
     @GetMapping("/{eventId}/registrations")
     public Iterable<java.util.Map<String, Object>> getEventRegistrations(@PathVariable Long eventId) {
         java.util.List<java.util.Map<String, Object>> result = new java.util.ArrayList<>();
-        
+
         for (com.example.campus.entity.Registration r : registrationService.getRegistrationsForEvent(eventId)) {
             java.util.Map<String, Object> map = new java.util.HashMap<>();
             map.put("id", r.getId());

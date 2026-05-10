@@ -16,6 +16,18 @@ public class GlobalExceptionHandler {
         return ApiResponse.error(403, "没有访问权限");
     }
 
+    @ExceptionHandler(SessionExpiredException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse<Object> handleSessionExpiredException(SessionExpiredException e) {
+        return ApiResponse.error(408, e.getMessage());
+    }
+
+    @ExceptionHandler(AccountDisabledException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse<Object> handleAccountDisabledException(AccountDisabledException e) {
+        return ApiResponse.error(410, e.getMessage());
+    }
+
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResponse<Object> handleRuntimeException(RuntimeException e) {

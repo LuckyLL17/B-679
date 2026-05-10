@@ -19,13 +19,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import request from '../../utils/request'
 import toast from '../../utils/toast'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const form = ref({ username: '', password: '' })
+
+onMounted(async () => {
+	try {
+		const user = await request.get('/auth/me')
+		if (user?.role === 'ADMIN') {
+			router.replace('/admin/events')
+		} else if (user) {
+			router.replace('/user/home')
+		}
+	} catch {
+		// ignore
+	}
+})
 
 const handleLogin = async () => {
 	try {

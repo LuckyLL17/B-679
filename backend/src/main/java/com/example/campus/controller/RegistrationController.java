@@ -4,6 +4,7 @@ import com.example.campus.entity.User;
 import com.example.campus.repository.UserRepository;
 import com.example.campus.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/events/{eventId}")
+@PreAuthorize("isAuthenticated()")
 public class RegistrationController {
 
     @Autowired

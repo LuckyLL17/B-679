@@ -1,10 +1,13 @@
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/controller/EventController.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/common/ApiResponse.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/GlobalExceptionHandler.java
+/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/UnauthorizedException.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/CampusApplication.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/service/AuthService.java
+/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/PermissionDeniedException.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/entity/Registration.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/service/RegistrationService.java
+/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/aspect/PermissionAspect.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/controller/RegistrationController.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/repository/RegistrationRepository.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/component/DataSeeder.java
@@ -12,8 +15,8 @@
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/config/SecurityConfig.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/entity/User.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/repository/EventRepository.java
-/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/common/PermissionUtil.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/config/GlobalResponseBodyAdvice.java
+/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/common/RequiresPermission.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/controller/AdminController.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/repository/UserRepository.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/entity/Event.java

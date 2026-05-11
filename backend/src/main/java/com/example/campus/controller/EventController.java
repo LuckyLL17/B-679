@@ -1,5 +1,6 @@
 package com.example.campus.controller;
 
+import com.example.campus.common.RequiresPermission;
 import com.example.campus.entity.Event;
 import com.example.campus.entity.User;
 import com.example.campus.repository.EventRepository;
@@ -30,12 +31,14 @@ public class EventController {
     private UserRepository userRepository;
 
     @GetMapping
+    @RequiresPermission({User.Role.ADMIN, User.Role.USER})
     public Page<Event> getEvents(@RequestParam(defaultValue = "0") int page,
                                  @RequestParam(defaultValue = "10") int size) {
         return eventRepository.findAll(PageRequest.of(page, size, Sort.by("createdAt").descending()));
     }
 
     @GetMapping("/{id}")
+    @RequiresPermission({User.Role.ADMIN, User.Role.USER})
     public Map<String, Object> getEvent(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
         Event event = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("活动不存在"));
         

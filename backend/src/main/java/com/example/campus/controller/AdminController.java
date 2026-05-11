@@ -1,6 +1,8 @@
 package com.example.campus.controller;
 
+import com.example.campus.common.RequiresPermission;
 import com.example.campus.entity.Event;
+import com.example.campus.entity.User;
 import com.example.campus.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/admin/events")
+@RequiresPermission(User.Role.ADMIN)
 public class AdminController {
 
     @Autowired

@@ -1,5 +1,6 @@
 package com.example.campus.controller;
 
+import com.example.campus.common.RequiresPermission;
 import com.example.campus.entity.User;
 import com.example.campus.repository.UserRepository;
 import com.example.campus.service.RegistrationService;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/events/{eventId}")
+@RequiresPermission({User.Role.ADMIN, User.Role.USER})
 public class RegistrationController {
 
     @Autowired

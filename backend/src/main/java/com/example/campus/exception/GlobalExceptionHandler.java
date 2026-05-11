@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(PermissionDeniedException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse<Object> handlePermissionDeniedException(PermissionDeniedException e) {
+        return ApiResponse.error(403, e.getMessage());
+    }
+
     // Catch typical business logic errors (RuntimeException)
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.OK) // Always return 200 OK

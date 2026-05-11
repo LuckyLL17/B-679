@@ -1,8 +1,5 @@
 package com.example.campus.common;
 
-import lombok.Data;
-
-@Data
 public class ApiResponse<T> {
     private int code;      // 0: Success, >0: Business Error
     private String message;
@@ -30,4 +27,11 @@ public class ApiResponse<T> {
         response.setMessage(message);
         return response;
     }
+
+    public int getCode() { return code; }
+    public void setCode(int code) { this.code = code; }
+    public String getMessage() { return message; }
+    public void setMessage(String message) { this.message = message; }
+    public T getData() { return data; }
+    public void setData(T data) { this.data = data; }
 }

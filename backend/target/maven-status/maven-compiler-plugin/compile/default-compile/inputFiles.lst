@@ -1,6 +1,7 @@
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/controller/EventController.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/common/ApiResponse.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/GlobalExceptionHandler.java
+/Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/UnauthorizedException.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/CampusApplication.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/service/AuthService.java
 /Volumes/ExMac/traeProject/0507GBS/0509-My/B-679/B-679_4/backend/src/main/java/com/example/campus/exception/PermissionDeniedException.java

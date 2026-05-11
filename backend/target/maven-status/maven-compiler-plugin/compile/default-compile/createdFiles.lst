@@ -20,6 +20,7 @@ com/example/campus/entity/Registration.class
 com/example/campus/service/AuthService.class
 com/example/campus/repository/EventRepository.class
 com/example/campus/controller/RegistrationController.class
+com/example/campus/exception/UnauthorizedException.class
 com/example/campus/entity/User.class
 com/example/campus/controller/AdminController.class
 com/example/campus/repository/UserRepository.class

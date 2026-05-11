@@ -3,6 +3,7 @@ package com.example.campus.aspect;
 import com.example.campus.common.RequiresPermission;
 import com.example.campus.entity.User;
 import com.example.campus.exception.PermissionDeniedException;
+import com.example.campus.exception.UnauthorizedException;
 import com.example.campus.repository.UserRepository;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -38,7 +39,7 @@ public class PermissionAspect {
             User currentUser = getCurrentUser();
             
             if (currentUser == null) {
-                throw new PermissionDeniedException("用户未登录");
+                throw new UnauthorizedException("登录已过期或未登录，请重新登录");
             }
             
             boolean hasPermission = Arrays.stream(requiredRoles)

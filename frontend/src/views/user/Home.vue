@@ -32,7 +32,8 @@ const router = useRouter()
 onMounted(async () => {
 	try {
 		const eventRes = await request.get('/events')
-		events.value = eventRes.content
+		console.log('Event List Response:', eventRes)
+		events.value = eventRes?.content || []
 	} catch (e) {
 		console.log('Error loading events', e)
 	}

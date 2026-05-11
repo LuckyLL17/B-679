@@ -45,8 +45,8 @@ const routes = [
 		],
 	},
 
-	// 根路径重定向到用户首页
-	{ path: '/', redirect: '/user/home' },
+	// 根路径：未登录默认进登录页（避免首屏等待鉴权接口导致白屏）
+	{ path: '/', redirect: '/login' },
 ]
 
 const router = createRouter({
@@ -55,14 +55,39 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to) => {
-	if (!to.matched.some((record) => record.meta.requiresAdmin)) return true
-	try {
-		const user = await request.get('/auth/me')
-		if (user?.role !== 'ADMIN') return '/user/home'
-		return true
-	} catch {
-		return '/login'
+	const publicPages = ['/', '/login', '/register']
+	const authRequired = !publicPages.includes(to.path)
+
+	if (authRequired) {
+		try {
+			// 尝试获取用户信息
+			const user = await request.get('/auth/me')
+
+			// 未登录 -> 跳转登录
+			if (!user) {
+				return '/login'
+			}
+
+			// 已登录但访问 /user 且是管理员 -> 跳转后台
+			if (user.role === 'ADMIN' && to.path.startsWith('/user')) {
+				return '/admin/events'
+			}
+
+			// 已登录但访问 /admin 且不是管理员 -> 跳转前台
+			if (to.path.startsWith('/admin') && user.role !== 'ADMIN') {
+				return '/user/home'
+			}
+
+			// 访问后台且是管理员 -> 放行
+			if (to.meta.requiresAdmin && user.role === 'ADMIN') {
+				return true
+			}
+		} catch (error) {
+			console.log('Auth check failed:', error)
+			return '/login'
+		}
 	}
+	return true
 })
 
 export default router
